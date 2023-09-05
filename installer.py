@@ -46,6 +46,12 @@ def SelectShortcut():
     shortcut.save()
 
 
+def SelectDirectory():
+    path = filedialog.askdirectory()
+
+    return path
+
+
 
 def download_github_files(repo_url, filenames, save_folder):
     """
