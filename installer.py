@@ -1,6 +1,7 @@
-import os, winshell
+import os
+import winshell
+import requests
 import pyuac
-import win32com
 from win32com.client import Dispatch
 import tkinter as tk
 from tkinter import filedialog
@@ -43,6 +44,46 @@ def SelectShortcut():
     # Set the TargetPath to the desired value and save again
     shortcut.Arguments = target
     shortcut.save()
+
+
+
+def download_github_files(repo_url, filenames, save_folder):
+    """
+    Download specific files from the GitHub repo and save them as .py files.
+
+    Parameters:
+    - repo_url (str): The URL of the GitHub repository (e.g., "https://github.com/username/repo_name")
+    - filenames (list): List of filenames to download from the repo
+    - save_folder (str): The path to the folder where the files will be saved
+    """
+    
+    # Ensure the save folder exists
+    if not os.path.exists(save_folder):
+        os.makedirs(save_folder)
+
+    # Base URL for raw content from GitHub
+    base_url = repo_url.replace("github.com", "raw.githubusercontent.com")
+
+    for filename in filenames:
+        file_url = f"{base_url}/main/{filename}"
+        response = requests.get(file_url)
+        
+        # Check if the request was successful
+        if response.status_code == 200:
+            with open(os.path.join(save_folder, filename), 'w') as file:
+                file.write(response.text)
+            print(f"Downloaded {filename} and saved to {save_folder}")
+        else:
+            print(f"Failed to download {filename}. Status code: {response.status_code}")
+
+# Example usage
+repo_url = "https://github.com/username/repo_name"  # Replace with your repo URL
+filenames = ["file1.py", "file2.py"]  # Replace with your filenames
+save_folder = "downloaded_files"  # Replace with your desired save folder
+
+if not os.path.exists(desktop + "\\Spotify Customizer"):
+    os.makedirs(desktop + "\\Spotify Customizer")
+download_github_files("https://github.com/RoCoderXD/Spotify-Customizer/", ["SpotifyCustomizerAutoStart.py", "main.py"], save_folder)
 
 
 

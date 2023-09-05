@@ -25,8 +25,8 @@ async def execute_script(script):
             response = await ws.recv()
             print(response)
 
-# First JS, for anything that can run before the CSS.
-#document.querySelector('#main > div > div.ZQftYELq0aOsg6tPbVbV > div.JG5J9NWJkaUO9fiKECMA > footer > div > div.P4eSEARM2h24PZxMHz1T > div > div.player-controls__buttons.player-controls__buttons--new-icons > button').click()
+
+# THIS IS THE SELECTOR FOR THE PLAY BUTTON: document.querySelector('#main > div > div.ZQftYELq0aOsg6tPbVbV > div.JG5J9NWJkaUO9fiKECMA > footer > div > div.P4eSEARM2h24PZxMHz1T > div > div.player-controls__buttons.player-controls__buttons--new-icons > button').click()
 js_script = """
 document.querySelector("#main > div > div.ZQftYELq0aOsg6tPbVbV").classList.add('backgroundClass');
 document.querySelector('#main > div > div.ZQftYELq0aOsg6tPbVbV > div.JG5J9NWJkaUO9fiKECMA > footer > div > div.P4eSEARM2h24PZxMHz1T > div > div.player-controls__buttons.player-controls__buttons--new-icons > button').click()
