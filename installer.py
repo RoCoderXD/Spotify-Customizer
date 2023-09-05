@@ -82,19 +82,22 @@ def download_github_files(repo_url, filenames, save_folder):
         else:
             print(f"Failed to download {filename}. Status code: {response.status_code}")
 
-# Example usage
-repo_url = "https://github.com/username/repo_name"  # Replace with your repo URL
-filenames = ["file1.py", "file2.py"]  # Replace with your filenames
-save_folder = "downloaded_files"  # Replace with your desired save folder
-
-if not os.path.exists(desktop + "\\Spotify Customizer"):
-    os.makedirs(desktop + "\\Spotify Customizer")
-download_github_files("https://github.com/RoCoderXD/Spotify-Customizer/", ["SpotifyCustomizerAutoStart.py", "main.py"], save_folder)
-
 
 
 print("\n\nTHIS IS NOT CONFIRMED TO WORK ON THE WINDOWS STORE VERSION OF SPOTIFY,\nPLEASE MAKE SURE YOU ARE USING THE DESKTOP APP FROM THE SPOTIFY WEBSITE")
 input("ok? (enter to continue)")
+
+print("\nPlease choose a directory for the install folder and files.")
+installdir = SelectDirectory()
+
+if not os.path.exists(installdir):
+    print("Warning: Install directory that was select does not exist, defauting to Desktop installation.")
+    installdir = (desktop)
+download_github_files("https://github.com/RoCoderXD/Spotify-Customizer/", ["SpotifyCustomizerAutoStart.py", "main.py"], installdir+"\\Spotify-Customizer")
+
+print(f"\n\nDownloaded Github files and put into: {installdir}")
+
+
 
 
 
