@@ -10,4 +10,5 @@ This is not even close to being finished but one day it will be.
   <li>Clean up code.</li>
   <li>Finish install script.</li>
   <li>Start work on making the customizer usable.</li>
+  <li>Add the ability to export and import designs.</li>
 </ul>
