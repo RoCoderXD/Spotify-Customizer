@@ -90,8 +90,9 @@ input("ok? (enter to continue)")
 print("\nPlease choose a directory for the install folder and files.")
 installdir = SelectDirectory()
 
+print("Downloading files...")
 if not os.path.exists(installdir):
-    print("Warning: Install directory that was select does not exist, defauting to Desktop installation.")
+    print("Warning: Install directory that was selected does not exist, defauting to Desktop installation.")
     installdir = (desktop)
 download_github_files("https://github.com/RoCoderXD/Spotify-Customizer/", ["SpotifyCustomizerAutoStart.py", "main.py"], installdir+"\\Spotify-Customizer")
 
