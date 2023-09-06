@@ -4,6 +4,8 @@ import json
 from time import sleep
 user = f"C:\\Users\\{os.getlogin()}"
 
+
+# Open config file to read the install path.
 configfile = open(f"{user}/Spotify-Customizer-Config.json", "r")
 installdir = json.loads(configfile.read())
 
