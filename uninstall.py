@@ -3,7 +3,14 @@ import winshell
 from win32com.client import Dispatch
 import json
 import glob
+import pyuac
 user = f"C:\\Users\\{os.getlogin()}"
+desktop = winshell.desktop()
+startup = winshell.startup()
+startmenu = winshell.start_menu()
+user = f"C:\\Users\\{os.getlogin()}"
+
+
 configfile = open(f"{user}\\Spotify-Customizer-Config.json", "r")
 installdir = json.loads(configfile.read())
 configfile.close()
@@ -18,15 +25,18 @@ def RestoreShortcuts(path):
     return True
 
 
-
+if not pyuac.isUserAdmin() and os.path.isfile(f"{startup}/SpotifyCustomizerAutoStart.pyw"):
+    print("Getting UAC to remove Auto Start.")
+    pyuac.runAsAdmin()
+    if not os.path.isfile(f"{startup}/SpotifyCustomizerAutoStart.pyw"):
+        input("Uninstalled! Press Enter to close...")
+        quit()
+    else:
+        input("Error trying to remove the Auto Start file, please try again. Press Enter to quit...")
+        quit()
 
 AREYOUSUREABOUTTHAT = input("Are you sure you want to uninstall? (Y/N) ")
 if str.upper(AREYOUSUREABOUTTHAT) == "Y":
-    desktop = winshell.desktop()
-    startup = winshell.startup()
-    startmenu = winshell.start_menu()
-    user = f"C:\\Users\\{os.getlogin()}"
-
 
     if os.path.isfile(desktop + "\\Spotify.lnk"):
         print("Found Desktop shortcut.")
@@ -37,6 +47,9 @@ if str.upper(AREYOUSUREABOUTTHAT) == "Y":
         print("Found Start Menu shortcut.")
         RestoreShortcuts(startmenu + "\\Programs\\Spotify.lnk")
         print("Restored.\n")
+
+    if os.path.isfile(f"{startup}/SpotifyCustomizerAutoStart.pyw"):
+        os.remove(f"{startup}/SpotifyCustomizerAutoStart.pyw")
 
 
     for clean_up in glob.glob(installdir):
