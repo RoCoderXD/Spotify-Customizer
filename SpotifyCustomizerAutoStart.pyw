@@ -6,7 +6,7 @@ user = f"C:\\Users\\{os.getlogin()}"
 
 
 # Open config file to read the install path.
-configfile = open(f"{user}/Spotify-Customizer-Config.json", "r")
+configfile = open(f"{user}\\Spotify-Customizer-Config.json", "r")
 installdir = json.loads(configfile.read())
 
 AwareOfRunning = False
@@ -17,7 +17,7 @@ while True:
             print("Spotify is running.")
             if AwareOfRunning == False:
                 AwareOfRunning = True
-                exec(open(installdir+"/main.pyw").read())
+                exec(open(installdir+"\\main.pyw").read())
             break
     else:
         if AwareOfRunning == True:
