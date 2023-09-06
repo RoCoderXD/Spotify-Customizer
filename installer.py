@@ -96,7 +96,7 @@ print("Downloading files...")
 if not os.path.exists(installdir):
     print("Warning: Install directory that was selected does not exist, defauting to Desktop installation.")
     installdir = (desktop)
-download_github_files("https://github.com/RoCoderXD/Spotify-Customizer/", ["SpotifyCustomizerAutoStart.py", "main.py", "Spotify-Customizer.py", "theme.json"], installdir+"\\Spotify-Customizer")
+download_github_files("https://github.com/RoCoderXD/Spotify-Customizer/", ["SpotifyCustomizerAutoStart.pyw", "main.pyw", "Spotify-Customizer.py", "theme.json"], installdir+"\\Spotify-Customizer")
 
 print(f"\n\nDownloaded Github files and put into: {installdir}")
 
