@@ -130,7 +130,7 @@ configfile.close()
 print("\n\nWould you like to enable autostart? (Y/N) ")
 autostart = input()
 if str.upper(autostart) == "Y":
-    shutil.copy(f"{installdir}\\Spotify-Customizer\\SpotifyModderAutoStart.pyw", winshell.startup())
+    shutil.copy(f"{installdir}\\Spotify-Customizer\\SpotifyCustomizerAutoStart.pyw", winshell.startup())
 
 
 
