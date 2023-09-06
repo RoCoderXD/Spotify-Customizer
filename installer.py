@@ -154,3 +154,4 @@ if shortcut_DSKTP == False:
 
 
 input("Done! Press enter to close...")
+quit()
