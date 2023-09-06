@@ -1,0 +1,5 @@
+pyuac==0.0.3
+pywin32==306
+Requests==2.31.0
+winshell==0.6
+psutil==5.9.5
