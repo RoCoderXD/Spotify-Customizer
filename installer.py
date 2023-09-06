@@ -1,4 +1,5 @@
 import os
+import ctypes, sys
 import winshell
 import requests
 import pyuac
@@ -114,6 +115,8 @@ configfile.close()
 print("\n\nWould you like to enable autostart? (Y/N) ")
 autostart = input()
 if str.upper(autostart) == "Y":
+    ctypes.windll.shell32.IsUserAnAdmin() or (ctypes.windll.shell32.ShellExecuteW(
+        None, "runas", sys.executable, " ".join(sys.argv), None, 1) > 32, exit())
     shutil.copy("./SpotifyModderAutoStart.py", winshell.startup())
 
 
