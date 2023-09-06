@@ -16,9 +16,9 @@ startmenu = winshell.start_menu()
 user = f"C:\\Users\\{os.getlogin()}"
 
 
-if not pyuac.isUserAdmin():
-    input("Please run the script as administrator (for startup files if chosen, else it is unused.)\nPress Enter to quit...")
-    quit()
+#if not pyuac.isUserAdmin():
+    #input("Please run the script as administrator (for startup files if chosen, else it is unused.)\nPress Enter to quit...")
+    #quit()
 
 def OverrideShortcut(path):
     shell = Dispatch('WScript.Shell')
