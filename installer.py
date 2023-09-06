@@ -16,8 +16,8 @@ user = f"C:\\Users\\{os.getlogin()}"
 
 
 if not pyuac.isUserAdmin():
-        print("Getting admin for potential startup file transfer.")
-        pyuac.runAsAdmin()
+    input("Please run the script as administrator (for startup files if chosen, else it is unused.)\nPress Enter to quit...")
+    quit()
 
 def OverrideShortcut(path):
     shell = Dispatch('WScript.Shell')
