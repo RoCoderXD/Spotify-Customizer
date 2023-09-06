@@ -28,21 +28,30 @@ async def execute_script(script):
 
 # THIS IS THE SELECTOR FOR THE PLAY BUTTON: document.querySelector('#main > div > div.ZQftYELq0aOsg6tPbVbV > div.JG5J9NWJkaUO9fiKECMA > footer > div > div.P4eSEARM2h24PZxMHz1T > div > div.player-controls__buttons.player-controls__buttons--new-icons > button').click()
 js_script = """
-document.querySelector("#main > div > div.ZQftYELq0aOsg6tPbVbV").classList.add('backgroundClass');
+
+function main() {
+
+    document.querySelector("#main > div > div.ZQftYELq0aOsg6tPbVbV").classList.add('backgroundClass');
 
 
-var style = document.createElement('style');
-style.type = 'text/css';
-style.innerHTML = `.backgroundClass {
-    background-image: url('https://media.discordapp.net/attachments/758081788861087794/1148096212529053766/wallpapersden.com_dragon-artwork-4k_3840x2160.jpg');
-    background-size: cover;
-    background-repeat: no-repeat;
-}`;
-document.head.appendChild(style);
+    var style = document.createElement('style');
+    style.type = 'text/css';
+    style.innerHTML = `.backgroundClass {
+        background-image: url('https://media.discordapp.net/attachments/758081788861087794/1148096212529053766/wallpapersden.com_dragon-artwork-4k_3840x2160.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+    }`;
+    document.head.appendChild(style);
+}
+
+var readyStateCheckInterval = setInterval(function() {
+    if (document.readyState === "complete") {
+        clearInterval(readyStateCheckInterval);
+        main();
+    }
+}, 10);
 
 
-
-document.querySelector('#main > div > div.ZQftYELq0aOsg6tPbVbV > div.JG5J9NWJkaUO9fiKECMA > footer > div > div.P4eSEARM2h24PZxMHz1T > div > div.player-controls__buttons.player-controls__buttons--new-icons > button').click()
 """
 asyncio.get_event_loop().run_until_complete(execute_script(js_script))
 
