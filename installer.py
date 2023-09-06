@@ -6,11 +6,13 @@ from win32com.client import Dispatch
 import tkinter as tk
 from tkinter import filedialog
 import shutil
+import json
 root = tk.Tk()
 root.withdraw()
 desktop = winshell.desktop()
 startup = winshell.startup()
 startmenu = winshell.start_menu()
+user = f"C:\\Users\\{os.getlogin()}"
 
 def OverrideShortcut(path):
     shell = Dispatch('WScript.Shell')
@@ -98,8 +100,9 @@ download_github_files("https://github.com/RoCoderXD/Spotify-Customizer/", ["Spot
 
 print(f"\n\nDownloaded Github files and put into: {installdir}")
 
-
-
+configfile = open(f"{user}\\Spotify-Customizer-Config.json", "w")
+configfile.write(json.dumps(installdir+r"\Spotify-Customizer"))
+configfile.close()
 
 
 
