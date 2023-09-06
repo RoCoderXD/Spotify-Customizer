@@ -39,7 +39,7 @@ if str.upper(AREYOUSUREABOUTTHAT) == "Y":
         print("Restored.\n")
 
 
-    for clean_up in glob.glob('C:/python/*.*'):
+    for clean_up in glob.glob(installdir):
         print(clean_up)
         if not clean_up.endswith('./uninstall.py'):    
             os.remove(clean_up)
