@@ -4,6 +4,7 @@ from win32com.client import Dispatch
 import json
 import glob
 import pyuac
+import sys
 user = f"C:\\Users\\{os.getlogin()}"
 desktop = winshell.desktop()
 startup = winshell.startup()
@@ -11,9 +12,22 @@ startmenu = winshell.start_menu()
 user = f"C:\\Users\\{os.getlogin()}"
 
 
+
+def show_exception_and_exit(exc_type, exc_value, tb):
+    import traceback
+    traceback.print_exception(exc_type, exc_value, tb)
+    input("Press key to exit.")
+    sys.exit(-1)
+sys.excepthook = show_exception_and_exit
+
+
 configfile = open(f"{user}\\Spotify-Customizer-Config.json", "r")
 installdir = json.loads(configfile.read())
 configfile.close()
+
+
+
+
 
 def RestoreShortcuts(path):
     shell = Dispatch('WScript.Shell')
