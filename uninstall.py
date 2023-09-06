@@ -12,14 +12,8 @@ def RestoreShortcuts(path):
     shell = Dispatch('WScript.Shell')
     shortcut = shell.CreateShortCut(path)
 
-    # Get the existing target path
-    existing_target = shortcut.TargetPath
-
-    # Append the new argument
-    target = existing_target + " --remote-debugging-port=9222"
-
     # Set the TargetPath to the desired value and save again
-    shortcut.Arguments = target
+    shortcut.Arguments = ""
     shortcut.save()
     return True
 
