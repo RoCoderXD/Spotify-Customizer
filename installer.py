@@ -1,5 +1,6 @@
 import os
 import winshell
+import sys
 import requests
 import pyuac
 from win32com.client import Dispatch
@@ -24,6 +25,15 @@ if not pyuac.isUserAdmin():
     else:
         input("Successful install not detected, please try again! Press Enter to quit...")
         quit()
+
+
+def show_exception_and_exit(exc_type, exc_value, tb):
+    import traceback
+    traceback.print_exception(exc_type, exc_value, tb)
+    input("Press key to exit.")
+    sys.exit(-1)
+sys.excepthook = show_exception_and_exit
+
 
 def OverrideShortcut(path):
     shell = Dispatch('WScript.Shell')
