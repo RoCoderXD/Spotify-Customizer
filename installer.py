@@ -14,6 +14,11 @@ startup = winshell.startup()
 startmenu = winshell.start_menu()
 user = f"C:\\Users\\{os.getlogin()}"
 
+
+if not pyuac.isUserAdmin():
+        print("Getting admin for potential startup file transfer.")
+        pyuac.runAsAdmin()
+
 def OverrideShortcut(path):
     shell = Dispatch('WScript.Shell')
     shortcut = shell.CreateShortCut(path)
@@ -109,11 +114,7 @@ configfile.close()
 print("\n\nWould you like to enable autostart? (Y/N) ")
 autostart = input()
 if str.upper(autostart) == "Y":
-    if not pyuac.isUserAdmin():
-        print("Getting admin for startup file transfer.")
-        pyuac.runAsAdmin()
-    else:
-        shutil.copy("./SpotifyModderAutoStart.py", winshell.startup())
+    shutil.copy("./SpotifyModderAutoStart.py", winshell.startup())
 
 
 
