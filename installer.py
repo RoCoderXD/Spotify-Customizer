@@ -16,9 +16,15 @@ startmenu = winshell.start_menu()
 user = f"C:\\Users\\{os.getlogin()}"
 
 
-#if not pyuac.isUserAdmin():
-    #input("Please run the script as administrator (for startup files if chosen, else it is unused.)\nPress Enter to quit...")
-    #quit()
+if not pyuac.isUserAdmin():
+    print("Getting UAC for potential startup file choice (if opted-out then it goes unused).")
+    pyuac.runAsAdmin()
+    if os.path.exists(f"{user}/Spotify-Customizer-Config.json"):
+        input("Installed! Press Enter to close...")
+        quit()
+    else:
+        input("Successful install not detected, please try again! Press Enter to quit...")
+        quit()
 
 def OverrideShortcut(path):
     shell = Dispatch('WScript.Shell')
@@ -115,8 +121,6 @@ configfile.close()
 print("\n\nWould you like to enable autostart? (Y/N) ")
 autostart = input()
 if str.upper(autostart) == "Y":
-    ctypes.windll.shell32.IsUserAnAdmin() or (ctypes.windll.shell32.ShellExecuteW(
-        None, "runas", sys.executable, " ".join(sys.argv), None, 1) > 32, exit())
     shutil.copy("./SpotifyModderAutoStart.py", winshell.startup())
 
 
