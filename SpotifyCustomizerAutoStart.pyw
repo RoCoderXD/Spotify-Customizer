@@ -13,7 +13,7 @@ while True:
     for process in psutil.process_iter(['name']):
         if process.info['name'] == "Spotify.exe":
             print("Spotify is running.")
-            exec(open(installdir+f"\main.py").read())
+            exec(open(installdir+"/main.py").read())
             if AwareOfRunning == False:
                 AwareOfRunning = True
             break

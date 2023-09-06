@@ -106,7 +106,7 @@ download_github_files("https://github.com/RoCoderXD/Spotify-Customizer/", ["Spot
 print(f"\n\nDownloaded Github files and put into: {installdir}")
 
 configfile = open(f"{user}\\Spotify-Customizer-Config.json", "w")
-configfile.write(json.dumps(installdir+r"\Spotify-Customizer"))
+configfile.write(json.dumps(installdir+"/Spotify-Customizer"))
 configfile.close()
 
 
