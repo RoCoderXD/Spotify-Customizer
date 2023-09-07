@@ -66,10 +66,10 @@ if str.upper(AREYOUSUREABOUTTHAT) == "Y":
         os.remove(f"{startup}/SpotifyCustomizerAutoStart.pyw")
 
 
-    for clean_up in glob.glob(installdir):
-        print(clean_up)
-        if not clean_up.endswith('uninstall.py'):    
-            os.remove(clean_up)
+    #for clean_up in glob.glob(installdir):
+        #print(clean_up)
+        #if not clean_up.endswith('uninstall.py'):    
+            #os.remove(clean_up)
     
     os.remove(f"{user}\\Spotify-Customizer-Config.json")
 
