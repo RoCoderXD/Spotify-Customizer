@@ -7,6 +7,7 @@ import sys
 import psutil
 import subprocess
 import os
+from time import sleep
 user = f"C:\\Users\\{os.getlogin()}"
 
 
@@ -24,6 +25,11 @@ async def execute_script(script):
                 if proc.name() == "Spotify.exe":
                     proc.kill()
             subprocess.call([f"{winshell.application_data()}/Spotify/Spotify.exe", "-remote-debugging-port=9222"])
+            sleep(0.5)
+            async with session.get('http://localhost:9222/json') as response:
+                tabs = await response.json()
+                # Assuming the first tab is the one you want to control
+                ws_url = tabs[0]['webSocketDebuggerUrl']
 
         async with websockets.connect(ws_url) as ws:
             # Create a message to evaluate a script
