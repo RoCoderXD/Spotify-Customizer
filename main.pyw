@@ -14,6 +14,7 @@ user = f"C:\\Users\\{os.getlogin()}"
 async def execute_script(script):
     async with aiohttp.ClientSession() as session:
         # Fetch the list of browser tabs
+        ws_url
         try:
             async with session.get('http://localhost:9222/json') as response:
                 tabs = await response.json()
@@ -30,7 +31,7 @@ async def execute_script(script):
                 tabs = await response.json()
                 # Assuming the first tab is the one you want to control
                 ws_url = tabs[0]['webSocketDebuggerUrl']
-
+        print(ws_url)
         async with websockets.connect(ws_url) as ws:
             # Create a message to evaluate a script
             message = json.dumps({
