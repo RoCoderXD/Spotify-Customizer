@@ -18,7 +18,7 @@ while True:
             print("Spotify is running.")
             if AwareOfRunning == False:
                 AwareOfRunning = True
-                exec(open(installdir+"\\main.pyw").read())
+                exec(open(installdir+"/main.pyw").read())
             break
     else:
         if AwareOfRunning == True:
