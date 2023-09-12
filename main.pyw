@@ -24,7 +24,7 @@ async def execute_script(script):
                 if proc.name() == "Spotify.exe":
                     proc.kill()
             sleep(0.25)
-            subprocess.Popen([f"{winshell.application_data()}/Spotify/Spotify.exe", "-remote-debugging-port=9222"])
+            subprocess.run([f"{winshell.application_data()}/Spotify/Spotify.exe", "-remote-debugging-port=9222"], timeout=1)
 
             async with session.get('http://localhost:9222/json') as response:
                 tabs = await response.json()
