@@ -13,8 +13,6 @@ user = f"C:\\Users\\{os.getlogin()}"
 
 async def execute_script(script):
     async with aiohttp.ClientSession() as session:
-        # Fetch the list of browser tabs
-        ws_url
         try:
             async with session.get('http://localhost:9222/json') as response:
                 tabs = await response.json()
@@ -25,12 +23,14 @@ async def execute_script(script):
                 # check whether the process name matches
                 if proc.name() == "Spotify.exe":
                     proc.kill()
-            subprocess.run([f"{winshell.application_data()}/Spotify/Spotify.exe", "-remote-debugging-port=9222"])
-            sleep(0.5)
+            sleep(0.25)
+            subprocess.Popen([f"{winshell.application_data()}/Spotify/Spotify.exe", "-remote-debugging-port=9222"])
+
             async with session.get('http://localhost:9222/json') as response:
                 tabs = await response.json()
                 # Assuming the first tab is the one you want to control
                 ws_url = tabs[0]['webSocketDebuggerUrl']
+
         print(ws_url)
         async with websockets.connect(ws_url) as ws:
             # Create a message to evaluate a script
