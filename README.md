@@ -11,4 +11,6 @@ This is not even close to being finished but one day it will be.
   <li>Finish install script.</li>
   <li>Start work on making the customizer usable.</li>
   <li>Add the ability to export and import designs.</li>
+  <li>Refine the installer and uninstaller.</li>
+  <li>Sometimes the Auto Start doesn't, well, auto start.</li>
 </ul>
