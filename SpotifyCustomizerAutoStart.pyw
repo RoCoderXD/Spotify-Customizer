@@ -2,6 +2,26 @@ import psutil
 import os
 import json
 from time import sleep
+import win32api
+import win32con
+import win32security
+
+def is_user_logged_in():
+    # Get the handle for the current session
+    hUser = win32api.OpenProcessToken(win32api.GetCurrentProcess(), win32con.TOKEN_QUERY)
+    
+    # Get the session ID for the current session
+    session_id = win32security.GetTokenInformation(hUser, win32security.TokenSessionId)
+    
+    # Check if the session is active
+    for session in win32api.WTSEnumerateSessions(win32con.WTS_CURRENT_SERVER_HANDLE):
+        if session['SessionId'] == session_id:
+            return session['State'] == win32con.WTSActive
+    return False
+
+while is_user_logged_in() == False:
+    sleep(5)
+
 user = f"C:\\Users\\{os.getlogin()}"
 
 
