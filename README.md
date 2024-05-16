@@ -1,7 +1,7 @@
 # Spotify-Customizer
-<b>PROBABLY GOING TO BE DISCONTINUED</b>
+<b>DISCONTINUED</b>
 <br />
-<i>I don't really have the time required currently to bring this project to a usable state :(</i>
+<i>I don't have the time required currently to bring this project to a usable state :(</i>
 
 
 Allows you to customize the appearance of your Spotify desktop app (non windows store version).
